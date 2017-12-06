@@ -11,13 +11,15 @@ public class Main {
         while (repeatQuestion != 0) {
             System.out.println("Введите предел поиска автоморфных чисел - N");
             long N = scanner.nextInt();
-            String str = Long.toString(N);
-            char[] arr = str.toCharArray();
-            int vol = 0;
-            for (int j:arr) vol++;
-            for (int i = 2; i < N; i++) {
-                for (int k = 1; k < vol; k++) {
-                    if (i == i * i % Math.pow(10, k))System.out.println(i);
+            long square;
+            for (int i = 0; i <= N; i++) {
+                square = i*i;
+                if (i==square) System.out.println(i + "^2 = " + square);
+                else {
+                    int count = (int) Math.log10(i) + 1;
+                    int extra = 1;
+                    for (int p = 0; p < count; ++p) extra *= 10;
+                    if (square % extra == i) System.out.println(i + "^2 = " + square);
                 }
             }
             System.out.println("Повторить игру еще раз? 1 – да / 0 – нет");
